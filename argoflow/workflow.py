@@ -175,13 +175,14 @@ class Workflow:
 
 
     # Submit the workflow to the Argo server
-    def run_workflow(self, serverUrl, executorToken) -> Dict[str, Any]:
+    def run_workflow(self, serverUrl, executorToken, sslVerify=False) -> Dict[str, Any]:
         workflow_dict = self.build()
 
         response = requests.post(
             f"https://{serverUrl}/api/v1/workflows/{self.namespace}",
             json=workflow_dict,
-            headers={"Authorization": f"Bearer {executorToken}"}
+            headers={"Authorization": f"Bearer {executorToken}"},
+            verify=sslVerify
         )
 
         if response.status_code == 200 or response.status_code == 201:

@@ -17,6 +17,9 @@ setup(
         "Source Code": "https://github.com/D-Ajay-Kumar/argowf-python",
     },
     packages=find_packages(),
+    install_requires=[
+        "requests>=2.0.0"
+    ],
     python_requires=">=3.7",
     keywords="argo workflows kubernetes devops ci/cd",
     include_package_data=True,
